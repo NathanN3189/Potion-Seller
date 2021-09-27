@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ecab2ba8ab08341b7f133f11a4f877, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: 
+  ItemName: Blue Potion
+  Icon: {fileID: 21300000, guid: dca57aad0f59bc244918df87b71c212c, type: 3}
