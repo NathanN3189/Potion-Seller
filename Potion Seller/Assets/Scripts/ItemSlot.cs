@@ -6,11 +6,31 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     
-    public Image Image;
+    [SerializeField] Image Image;
+    private Item _item;
 
-    public Item item;
+    public Item Item
+    {
+        get { return _item; }
+        set {
+            _item = value;
 
-    private void OnValidate()
+            if(_item == null)
+            {
+                Image.enabled = false;
+
+            }else { Image.sprite = _item.Icon;
+                Image.enabled = true;
+
+            }
+
+
+        }
+
+
+    }
+
+    protected virtual void OnValidate()
     {
         if (Image == null)
 
