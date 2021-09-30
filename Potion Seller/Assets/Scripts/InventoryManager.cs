@@ -7,6 +7,21 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] Inventory inventory;
     [SerializeField] EquipmentPanel equipmentPanel;
 
+    private void Awake()
+    {
+        inventory.OnItemRightClickEvent += EquipFromInventory;
+    }
+
+    private void EquipFromInventory(Item item)
+    {
+        if(item is EquippableItem)
+        {
+            Equip((EquippableItem)item);
+        }
+    }
+
+
+
     public void Equip(EquippableItem item)
 
     {
@@ -35,7 +50,16 @@ public class InventoryManager : MonoBehaviour
 
 
     }
+    public void Unequip(EquippableItem item)
+    {
+        if(!inventory.IsFull() && equipmentPanel.RemoveItem(item))
+        {
+            inventory.AddItem(item);
+        }
 
+
+
+    }
 
 
 

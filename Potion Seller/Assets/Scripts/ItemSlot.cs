@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System;
 
-public class ItemSlot : MonoBehaviour
+public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
     
     [SerializeField] Image Image;
+
+    public event Action<Item> OnRightClickEvent; 
+        
     private Item _item;
 
     public Item Item
@@ -18,9 +23,12 @@ public class ItemSlot : MonoBehaviour
             if(_item == null)
             {
                 Image.enabled = false;
+                
 
-            }else { Image.sprite = _item.Icon;
+            }
+            else { Image.sprite = _item.Icon;
                 Image.enabled = true;
+                
 
             }
 
@@ -28,6 +36,15 @@ public class ItemSlot : MonoBehaviour
         }
 
 
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(eventData != null && eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (Item != null && OnRightClickEvent != null)
+                OnRightClickEvent(Item);
+        }
     }
 
     protected virtual void OnValidate()
@@ -38,5 +55,5 @@ public class ItemSlot : MonoBehaviour
                 
     }
 
-
+    
 }
