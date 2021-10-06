@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+public class UICraftResult : MonoBehaviour, IPointerDownHandler
+{
+
+    public SlotPanel slotPanel;
+    public Inventory inventory;
+
+    public void OnPointerDown(PointerEventData evenData)
+    {
+        slotPanel.EmptyAllSlots();
+        inventory.playerItems.Add(GetComponent<UIItem>().item);
+    }
+
+
+
+}

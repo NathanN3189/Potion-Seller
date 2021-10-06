@@ -7,13 +7,15 @@ using UnityEngine.EventSystems;
 public class UIItem : MonoBehaviour, IPointerDownHandler 
 {
     public Item item;
-
     private Image spriteImage;
     private UIItem selectedItem;
+    public bool craftingSlot = false;
+    private CraftingSlots craftingSlots;
 
 
     private void Awake()
     {
+        craftingSlots = FindObjectOfType<CraftingSlots>();
         selectedItem = GameObject.Find("SelectedItem").GetComponent<UIItem>();
         spriteImage = GetComponent<Image>();
         
@@ -31,6 +33,10 @@ public class UIItem : MonoBehaviour, IPointerDownHandler
         else
         {
             spriteImage.color = Color.clear;
+        }
+        if (craftingSlot)
+        {
+            craftingSlots.UpdateRecipe();
         }
     }
 

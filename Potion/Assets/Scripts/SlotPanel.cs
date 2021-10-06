@@ -7,7 +7,7 @@ public class SlotPanel : MonoBehaviour
     public List<UIItem> uiItems = new List<UIItem>();
     public int numberOfSlots;
     public GameObject slotPrefab;
-    // Use this for initialization
+    
     void Awake()
     {
         for (int i = 0; i < numberOfSlots; i++)
